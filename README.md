@@ -104,6 +104,6 @@ sai
 * **Seleção de Regras:** Um padrão de projeto será usado para selecionar regras de empréstimo.
 
 ### Sugestão de Diagrama de Classes Simplificado
-![Diagrama de Classe simplificado](sugestao-diagrama.png)
+![Diagrama de Classe simplificado](sugestao-diagrama 2.0.jpeg)
 
 Obs.: ainda precisamos adequar o diagrama aos Padrões de projeto.

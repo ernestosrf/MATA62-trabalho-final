@@ -94,7 +94,7 @@ ntf <código_usuário>
 Para sair do sistema, digite:
 sai
 
-### 4. Exigências do Projeto
+## 4. Exigências do Projeto
 * **Persistência:** Os dados serão mantidos em memória durante a execução.
 * **Singleton:** Uma classe Singleton gerenciará usuários e livros.
 * **Restrições de Cadastro:** Não há cadastro de novos itens.
@@ -107,3 +107,15 @@ sai
 ![Diagrama de Classe simplificado](sugestao-diagrama%202.0.jpeg)
 
 Obs.: ainda precisamos adequar o diagrama aos Padrões de projeto.
+
+
+## 4. Padrões de Projeto
+
+### 4.1 Command
+
+O Command é um padrão de projeto que pode ser aplicado para lidar com os seguintes tipos de situações: Queremos implementar várias ações. Essas ações podem ser executadas em diferentes momentos e por diferentes partes do programa. Além disso, queremos ter a flexibilidade de adicionar novas ações no futuro.
+Segue uma figura dos elementos que compoem o command em nosso projeto.
+
+
+Segue o detalhamento das funções de cada elemento:
+

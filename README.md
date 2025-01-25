@@ -114,7 +114,7 @@ Obs.: ainda precisamos adequar o diagrama aos Padrões de projeto.
 ### 4.1 Command
 
 O Command é um padrão de projeto que pode ser aplicado para lidar com os seguintes tipos de situações: Queremos implementar várias ações. Essas ações podem ser executadas em diferentes momentos e por diferentes partes do programa. Além disso, queremos ter a flexibilidade de adicionar novas ações no futuro.
-Em nosso projeto o Command está sendo utilizado para encapsular as diferentes ações (emprestar, devolver, etc.) em objetos separados. O Invocador atua como um intermediário, recebendo a solicitação de execução de um comando e delegando a execução para o objeto Command correspondente.(ver figura abaixo com os elementos)
+Em nosso projeto o Command está sendo utilizado para encapsular as diferentes ações (emprestar, devolver, etc.) em objetos separados. O Invocador atua como um intermediário, recebendo a solicitação de execução de um comando e delegando a execução para o objeto Command correspondente(ver figura abaixo com os elementos).
 ![Elementos do Command](Command/Command-uml.jpg)
 
 
@@ -139,11 +139,12 @@ Elas Implementam a interface ICommando e são responsáveis pelas ações espec�
 ### 4.2 Singleton
 
 O padrão Singleton garante que uma classe tenha apenas uma instância durante toda a execução do programa. Isso evita problemas de concorrência e inconsistências durante o acesso a recursos que são compartilhadas entre partes diferentes do aplicativo.
-No nosso caso a instâncias escolhidas para serem únicas foram duas, das classes GerenciadorUsuarios e GerenciadorLivros que são responsáveis por fazer a interligação entre o gerenciamento de livros e dos usuários com as demais partes do sistema(ver imagem abaixo).
+No nosso caso a instância escolhida para ser única foi a da classe Gerenciador que é responsável por manter duas listas com livros e usuários e fazer o gerenciamento desses objetos a medida em que eles são manipulados pelas demais partes do sistema(ver imagem abaixo).
 ![Elemento do Singleton](Singleton/singleton-uml.jpg)
 
 ### 4.3 Observer
 O padrão de software Observer permite estabelecer uma relação de dependência entre tipos de objetos em que um objeto sujeito pode "avisar" seus objetos dependentes (observadores) quando seu estado mudar.Em nosso projeto esse padrão foi utilizado para implementar um mecanismo de notificação onde os professores (observadores) são notificados sobre a ocorrência de mais de duas reservas simultâneas nos livros que ele está observando. Isso permite que os professores tomem decisões baseadas nas informações mais recentes sobre a disponibilidade dos livros (ver figura e detalhamento dos elementos logo abaixo).
+
 ![Elementos do Observer](Observer/Observer-uml.jpg)
 
 #### 4.3.1 IObservador

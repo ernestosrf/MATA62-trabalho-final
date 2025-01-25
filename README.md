@@ -114,8 +114,46 @@ Obs.: ainda precisamos adequar o diagrama aos Padrões de projeto.
 ### 4.1 Command
 
 O Command é um padrão de projeto que pode ser aplicado para lidar com os seguintes tipos de situações: Queremos implementar várias ações. Essas ações podem ser executadas em diferentes momentos e por diferentes partes do programa. Além disso, queremos ter a flexibilidade de adicionar novas ações no futuro.
-Segue uma figura dos elementos que compoem o command em nosso projeto.
+Em nosso projeto o Command está sendo utilizado para encapsular as diferentes ações (emprestar, devolver, etc.) em objetos separados. O Invocador atua como um intermediário, recebendo a solicitação de execução de um comando e delegando a execução para o objeto Command correspondente.(ver figura abaixo com os elementos)
+![Elementos do Command](Command/Command-uml.jpg)
 
 
 Segue o detalhamento das funções de cada elemento:
+
+#### 4.1.1 Classe App
+É a que possui a função principal(main) do nosso programa. Ela é responsável por iniciar o programa e instanciar/chamar todas as demais classes, objetos e funçõem que compoem o aplicativo.
+
+#### 4.1.2 Classe Fabrica
+Ela é responsável por fornecer instâncias de classe; neste caso específico, ela instancia objetos importantes para a lógica do aplicativo e para a aplicação do padrão Command pois ela fornece um objeto do tipo Invocador para a classe principal. Com esse elemento buscamos aplicar o conceito de Abstract Factory para criar as instâncias de forma mais flexível.
+#### 4.1.3 Classe Invocador
+É responsável por manter e executar um conjunto de comandos utilizando um HashMap.
+Esta classe possui uma associação com a interface ICommand objetivo tornar o seleção de um comando mais flexível.
+A ideia é receber uma string representando o comando e busca no HashMap a implementação correspondente para executar.
+#### 4.1.4 Interface Icomando
+Ela define a interface para os comandos; que por sua vez é implementada por cada comando concreto.
+Apesar de existirem outros comandos exigidos na especificação, no diagrama acima eles estão representados pelas classes EmprestarComando e DevolverComando.
+#### 4.1.5 Classes emprestarComando e devolverComando
+
+Elas Implementam a interface ICommando e são responsáveis pelas ações específicas de emprestar e devolver um item, respectivamente.
+
+### 4.2 Singleton
+
+O padrão Singleton garante que uma classe tenha apenas uma instância durante toda a execução do programa. Isso evita problemas de concorrência e inconsistências durante o acesso a recursos que são compartilhadas entre partes diferentes do aplicativo.
+No nosso caso a instância escolhida para ser única é a da classe SistemaGerenciamentoBibliote que é faz a interligação entre o gerenciamento de livros e dos usuários (ver imagem abaixo).
+![Elemento do Singleton](Singleton/singleton-uml.jpg)
+
+### 4.3 Observer
+O padrão de software Observer permite estabelecer uma relação de dependência entre tipos de objetos em que um objeto sujeito pode "avisar" seus objetos dependentes (observadores) quando seu estado mudar.Em nosso projeto esse padrão foi utilizado para implementar um mecanismo de notificação onde os professores (observadores) são notificados sobre a ocorrência de mais de duas reservas simultâneas nos livros que ele está observando. Isso permite que os professores tomem decisões baseadas nas informações mais recentes sobre a disponibilidade dos livros (ver figura e detalhamento dos elementos logo abaixo).
+![Elementos do Observer](Observer/Observer-uml.jpg)
+
+#### 4.3.1 IObservador
+Define a interface para os observadores, especificando os métodos necessários para inscrever como observador e ser notificado quanto as mudanças ocorridas num livro de seu interesse.
+
+#### 4.3.2 Professor
+Implementa a interface IObservador, tornando-se um observador do livro. Possui atributos específicos para o professor e o método avisar() que será chamado quando o livro notificar uma mudança. Com isso o professor poderá tomar alguma ação como verificar se o livro está disponível para empréstimo.
+
+#### 4.3.3 Livro
+
+É a classe que atua como o sujeito que será observado.
+Possui o métodos executarRegistroObservacoes() e notificarObservadores() que permitem inscrever novos observadores e notificar os observadores registrados.
 

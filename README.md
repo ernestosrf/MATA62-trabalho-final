@@ -139,7 +139,7 @@ Elas Implementam a interface ICommando e são responsáveis pelas ações espec�
 ### 4.2 Singleton
 
 O padrão Singleton garante que uma classe tenha apenas uma instância durante toda a execução do programa. Isso evita problemas de concorrência e inconsistências durante o acesso a recursos que são compartilhadas entre partes diferentes do aplicativo.
-No nosso caso a instância escolhida para ser única é a da classe SistemaGerenciamentoBibliote que é faz a interligação entre o gerenciamento de livros e dos usuários (ver imagem abaixo).
+No nosso caso a instâncias escolhidas para serem únicas foram duas, das classes GerenciadorUsuarios e GerenciadorLivros que são responsáveis por fazer a interligação entre o gerenciamento de livros e dos usuários com as demais partes do sistema(ver imagem abaixo).
 ![Elemento do Singleton](Singleton/singleton-uml.jpg)
 
 ### 4.3 Observer

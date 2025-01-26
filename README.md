@@ -106,7 +106,7 @@ sai
 ### Sugestão de Diagrama de Classes Simplificado
 ![Diagrama de Classe simplificado](sugestao-diagrama-3.0.jpg)
 
-Obs.: ainda precisamos adequar o diagrama aos Padrões de projeto.
+
 
 
 ## 4. Padrões de Projeto

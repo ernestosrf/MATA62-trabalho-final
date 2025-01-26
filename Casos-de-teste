@@ -19,47 +19,57 @@ Código, Título, Editora, Autores, Edição, Ano-Publicação
 100,Engenharia de Software,Addison Wesley,Ian Sommervile,6ª,2000
 
 
-Livro 101: 1 exemplar disponível e 2 reservas.
+* Livro 101: 1 exemplar disponível e 2 reservas.
 
-101 UML - Guia do Usuário Campus Grady Booch, James Rumbaugh, Ivar Jacobson 7ª 2000
+Código, Título, Editora, Autores, Edição, Ano-Publicação
+101,UML - Guia do Usuário,Campus Grady Booch,{James Rumbaugh, Ivar Jacobson}, 7ª, 2000
 
-Livro C: Sem exemplares disponíveis.
 
+* Livro 200: 1 exemplar "indisponivel".
+Código, Título, Editora, Autores, Edição, Ano-Publicação
+200,Code Complete,Microsoft Press,Steve McConnell,2ª,2014
+
+
+> Exemplares:
+
+
+
+(String codigo, boolean disponivel, String tituloLivro)
+
+(02,true,"Engenharia de Software")
 
 > Preparação:
 
-Cadastrar os 3 usuários (1 professor, 1 aluno de graduação e 1 aluno de pós-graduação).
-Cadastrar os 3 livros com as quantidades de exemplares e reservas definidas.
+Cadastrar os 3 usuários (1 professor, 1 aluno de graduação e 1 aluno de pós-graduação. >>>>> ok
+Obs.: Simular o Aluno 2 marcando-o como "devedor"  >>>>> ok
+Cadastrar os 3 livros com as quantidades de exemplares definidas>>>>>
 
-Opcional: Simular um empréstimo anterior para o Aluno 2, marcando-o como "devedor".
-Cenários de Teste:
+> Cenários de Teste:
 
-Cenário 1: Empréstimo bem-sucedido para Aluno 1:
-O aluno 1 tenta emprestar 02 dois exemplares do Livro A.
+Cenário 1: Professor se registra como Observador do Livro 101
+
+Cenário 2: O aluno 1 tenta emprestar 02 exemplares do Livro 100.
 Resultado esperado: empréstimos são realizados com sucesso.
 
-Cenário 2: Empréstimo negado para aluno com livro em atraso:
-O Aluno 2 (com livro em atraso) tenta emprestar o Livro B.
+Cenário 3: O Aluno 2 (com livro em atraso) tenta emprestar o Livro 101.
+Resultado esperado: O empréstimo é negado. Aluno com livro em atrasado.
+
+Cenário 4: O Aluno 2 reserva o Livro 101.
+Resultado esperado: Reserva aprovada e o professor será notificado.
+
+Cenário 5: O Aluno 1 (graduação) tenta emprestar o Livro 101, considerando que ele já tenha 2 livros emprestados.
 Resultado esperado: O empréstimo é negado.
 
-Cenário 3: Empréstimo para aluno com limite de empréstimos:
-O Aluno 1 (graduação) tenta emprestar o Livro B, considerando que ele já tenha 2 livros emprestados.
-Resultado esperado: O empréstimo é negado.
+Cenário 6: O Aluno 1 reserva o Livro 101.
+Resultado esperado: Reserva aprovada e o professor será notificado.
 
-Cenário 4: Empréstimo para livro indisponível:
-O Professor 1 tenta emprestar o Livro C.
-Resultado esperado: O empréstimo é negado.
-
-Cenário 5: Empréstimo para livro com reservas:
-O professor tenta emprestar o Livro B (com 2 reservas).
+Cenário 7: Empréstimo para livro com reservas:
+O professor tenta emprestar o Livro 101 (com 2 reservas).
 Resultado esperado: O empréstimo é realizado com sucesso, pois o professor tem prioridade sobre as reservas.
 
+Cenário 8: Empréstimo para livro indisponível:
+O Professor 1 tenta emprestar o Livro 200.
+Resultado esperado: O empréstimo é negado por que não há exemplares disponíveis cadastrados para esse livro.
 
 
-Livro
-
-Código, Título, Editora, Autores, Edição, Ano-Publicação
-100,Engenharia de Software,Addison Wesley,Ian Sommervile,6ª,2000
-
-Exemplares
 

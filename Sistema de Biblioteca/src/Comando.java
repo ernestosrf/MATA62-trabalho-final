@@ -1,3 +1,0 @@
-interface Comando {
-    void executar();
-}

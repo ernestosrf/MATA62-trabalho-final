@@ -103,7 +103,7 @@ sai
 * **Padrão Command:** Será utilizado para desacoplar a invocação de comandos.
 * **Seleção de Regras:** Um padrão de projeto será usado para selecionar regras de empréstimo.
 
-### Sugestão de Diagrama de Classes Simplificado
+### Diagrama de Classes Simplificado
 ![Diagrama de Classe simplificado](sugestao-diagrama-3.0.jpg)
 
 

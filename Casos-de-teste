@@ -1,0 +1,65 @@
+
+Definindo os Dados do Teste
+
+Considerando que você precisa de 3 usuários (2 alunos e 1 professor), vamos definir um cenário básico:
+
+> Usuários:
+
+* Aluno 123 (graduação): Sem livros em atraso.
+
+* Aluno 456 (pós-graduação): Com um livro em atraso.
+
+* Professor 100: Sem livros em atraso.
+
+> Livros:
+
+* Livro 100: 2 exemplares disponíveis.
+
+Código, Título, Editora, Autores, Edição, Ano-Publicação
+100,Engenharia de Software,Addison Wesley,Ian Sommervile,6ª,2000
+
+
+Livro 101: 1 exemplar disponível e 2 reservas.
+
+101 UML - Guia do Usuário Campus Grady Booch, James Rumbaugh, Ivar Jacobson 7ª 2000
+
+Livro C: Sem exemplares disponíveis.
+
+
+> Preparação:
+
+Cadastrar os 3 usuários (1 professor, 1 aluno de graduação e 1 aluno de pós-graduação).
+Cadastrar os 3 livros com as quantidades de exemplares e reservas definidas.
+
+Opcional: Simular um empréstimo anterior para o Aluno 2, marcando-o como "devedor".
+Cenários de Teste:
+
+Cenário 1: Empréstimo bem-sucedido para Aluno 1:
+O aluno 1 tenta emprestar 02 dois exemplares do Livro A.
+Resultado esperado: empréstimos são realizados com sucesso.
+
+Cenário 2: Empréstimo negado para aluno com livro em atraso:
+O Aluno 2 (com livro em atraso) tenta emprestar o Livro B.
+Resultado esperado: O empréstimo é negado.
+
+Cenário 3: Empréstimo para aluno com limite de empréstimos:
+O Aluno 1 (graduação) tenta emprestar o Livro B, considerando que ele já tenha 2 livros emprestados.
+Resultado esperado: O empréstimo é negado.
+
+Cenário 4: Empréstimo para livro indisponível:
+O Professor 1 tenta emprestar o Livro C.
+Resultado esperado: O empréstimo é negado.
+
+Cenário 5: Empréstimo para livro com reservas:
+O professor tenta emprestar o Livro B (com 2 reservas).
+Resultado esperado: O empréstimo é realizado com sucesso, pois o professor tem prioridade sobre as reservas.
+
+
+
+Livro
+
+Código, Título, Editora, Autores, Edição, Ano-Publicação
+100,Engenharia de Software,Addison Wesley,Ian Sommervile,6ª,2000
+
+Exemplares
+

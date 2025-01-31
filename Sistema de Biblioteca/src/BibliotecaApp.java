@@ -1,30 +1,31 @@
+import gerenciador.Gerenciador;
+import gerenciador.Invocador;
+import factory.Fabrica;
+
 import java.util.Scanner;
 
 public class BibliotecaApp {
     public static void main(String[] args) {
-        GerenciadorUsuarios gerenciadorUsuarios = GerenciadorUsuarios.getInstance();
-        GerenciadorLivros gerenciadorLivros = GerenciadorLivros.getInstance();
+        Fabrica fabrica = new Fabrica();
+        Gerenciador gerenciador = fabrica.criarGerenciador();
+        Invocador invocador = new Invocador(gerenciador);
 
-        // Adicionando alguns usuários e livros de exemplo
-        gerenciadorUsuarios.adicionarUsuario(new AlunoGraduacao("123", "João"));
-        gerenciadorUsuarios.adicionarUsuario(new AlunoPosGraduacao("124", "Maria"));
-        gerenciadorUsuarios.adicionarUsuario(new Professor("125", "Dr. Silva"));
-
-        gerenciadorLivros.adicionarLivro(new Livro("001", "Introdução à Programação", 3));
-        gerenciadorLivros.adicionarLivro(new Livro("002", "Algoritmos Avançados", 1));
-
-        ProcessadorComandos processador = new ProcessadorComandos();
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Bem-vindo ao Sistema de Biblioteca!");
+        System.out.println("Comandos disponíveis: emp <código_usuario> <código_livro>, dev <código_usuario> <código_livro>, sai");
 
-        System.out.println("Sistema de Biblioteca. Digite um comando ou 'sair' para encerrar:");
         while (true) {
-            System.out.print("> ");
-            String comando = scanner.nextLine();
-            if (comando.equalsIgnoreCase("sair")) {
+            System.out.print("Digite um comando: ");
+            String comandoStr = scanner.nextLine();
+
+            if (comandoStr.equals("sai")) {
+                System.out.println("Saindo do sistema...");
                 break;
             }
-            processador.executarComando(comando);
+
+            invocador.executarComando(comandoStr);
         }
+
         scanner.close();
     }
 }

@@ -1,27 +1,20 @@
 package model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Reserva {
-    private int codigoUsuario;
-    private int codigoLivro;
-    private Date dataReserva;
+    private Usuario usuario;
+    private Livro livro;
+    private LocalDate dataReserva;
 
-    public Reserva(int codigoUsuario, int codigoLivro, Date dataReserva) {
-        this.codigoUsuario = codigoUsuario;
-        this.codigoLivro = codigoLivro;
-        this.dataReserva = dataReserva;
+    public Reserva(Usuario usuario, Livro livro) {
+        this.usuario = usuario;
+        this.livro = livro;
+        this.dataReserva = LocalDate.now();
     }
 
-    public int getCodigoUsuario() {
-        return codigoUsuario;
-    }
-
-    public int getCodigoLivro() {
-        return codigoLivro;
-    }
-
-    public Date getDataReserva() {
-        return dataReserva;
-    }
+    // Getters
+    public Usuario getUsuario() { return usuario; }
+    public Livro getLivro() { return livro; }
+    public LocalDate getDataReserva() { return dataReserva; }
 }

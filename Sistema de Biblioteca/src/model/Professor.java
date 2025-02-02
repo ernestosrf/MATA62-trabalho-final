@@ -1,18 +1,23 @@
 package model;
 
-import observer.IObservador;
+import strategy.RegraEmprestimo;
+import strategy.RegraProfessor;
 
-public class Professor implements IObservador {
-    private int codigo;
-    private String nome;
-
+public class Professor extends Usuario {
     public Professor(int codigo, String nome) {
-        this.codigo = codigo;
-        this.nome = nome;
+        super(codigo, nome);
     }
 
     @Override
-    public void notificar(String string) {
-        System.out.println("model.Professor " + nome + " notificado sobre o livro: ");
+    public RegraEmprestimo getRegraEmprestimo() {
+        return new RegraProfessor();
     }
+
+    @Override
+    public int getLimiteEmprestimos() {
+        return Integer.MAX_VALUE; // Sem limite de empréstimos
+    }
+
+    @Override
+    public int getDiasEmprestimo() { return 8; }
 }

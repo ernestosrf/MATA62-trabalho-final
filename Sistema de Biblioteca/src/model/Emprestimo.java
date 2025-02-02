@@ -1,15 +1,20 @@
 package model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Emprestimo {
-    private String codigoExemplar;
-    private int codigoUsuario;
-    private Date dataEmprestimo;
-    private Date dataDevolucao;
-    private boolean devolvido;
+    private Exemplar exemplar;
+    private LocalDate dataEmprestimo;
+    private LocalDate dataDevolucaoPrevista;
 
-    public Date getDataDevolucao() {
-        return null;
+    public Emprestimo(Exemplar exemplar, Usuario usuario) {
+        this.exemplar = exemplar;
+        this.dataEmprestimo = LocalDate.now();
+        this.dataDevolucaoPrevista = dataEmprestimo.plusDays(usuario.getDiasEmprestimo());
     }
+
+    // Getters
+    public Exemplar getExemplar() { return exemplar; }
+    public LocalDate getDataEmprestimo() { return dataEmprestimo; }
+    public LocalDate getDataDevolucaoPrevista() { return dataDevolucaoPrevista; }
 }

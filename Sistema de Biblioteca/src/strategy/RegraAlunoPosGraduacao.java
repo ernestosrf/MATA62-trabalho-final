@@ -24,7 +24,7 @@ public class RegraAlunoPosGraduacao implements RegraEmprestimo {
             return false;
         }
         if (!verificarReservas(usuario, livro)) {
-            mensagemErro = "Regra de reservas não atendida.";
+            mensagemErro = "O livro se encontra reservado.";
             return false;
         }
         if (usuarioJaTemEmprestimo(usuario, livro)) {
@@ -55,7 +55,7 @@ public class RegraAlunoPosGraduacao implements RegraEmprestimo {
                 .filter(Exemplar::getStatus).count();
 
         if (numReservas < exemplaresDisponiveis) {
-            return !livro.getReservas().stream().anyMatch(r -> r.getUsuario().equals(usuario));
+            return true;
         } else {
             return livro.getReservas().stream().anyMatch(r -> r.getUsuario().equals(usuario));
         }

@@ -1,5 +1,6 @@
 package model;
 
+import observer.IObservador;
 import strategy.RegraEmprestimo;
 
 import java.util.ArrayList;
@@ -10,6 +11,8 @@ public abstract class Usuario {
     private String nome;
     private List<Reserva> reservas = new ArrayList<>();
     private List<Emprestimo> emprestimosAtivos = new ArrayList<>();
+    private List<Emprestimo> emprestimosInativos = new ArrayList<>();
+    private IObservador observador;
 
     public Usuario(int codigo, String nome) {
         this.codigo = codigo;
@@ -40,6 +43,11 @@ public abstract class Usuario {
         emprestimosAtivos.add(emprestimo);
     }
 
+    public void finalizarEmprestimo(Emprestimo emprestimo) {
+        emprestimosAtivos.remove(emprestimo);
+        emprestimosInativos.add(emprestimo);
+    }
+
     public void removerEmprestimo(Emprestimo emprestimo) {
         emprestimosAtivos.remove(emprestimo);
     }
@@ -48,9 +56,21 @@ public abstract class Usuario {
         return emprestimosAtivos;
     }
 
+    public List<Emprestimo> getEmprestimosInativos() {
+        return emprestimosInativos;
+    }
+
     public abstract RegraEmprestimo getRegraEmprestimo();
 
     public abstract int getLimiteEmprestimos();
 
     public abstract int getDiasEmprestimo();
+
+    public IObservador getObservador() {
+        return observador;
+    }
+
+    public void setObservador(IObservador observador) {
+        this.observador = observador;
+    }
 }

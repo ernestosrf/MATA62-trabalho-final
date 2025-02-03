@@ -12,6 +12,10 @@ public class RegraAlunoGraduacao implements RegraEmprestimo {
     public boolean podeEmprestar(Usuario usuario, Livro livro) {
         mensagemErro = ""; // Reinicia a mensagem de erro
 
+        if (usuarioJaTemEmprestimo(usuario, livro)) {
+            mensagemErro = "Usuário já possui empréstimo de um exemplar deste livro.";
+            return false;
+        }
         if (!temExemplaresDisponiveis(livro)) {
             mensagemErro = "Não há exemplares disponíveis.";
             return false;
@@ -20,16 +24,12 @@ public class RegraAlunoGraduacao implements RegraEmprestimo {
             mensagemErro = "Usuário possui empréstimos em atraso.";
             return false;
         }
-        if (usuarioJaTemEmprestimo(usuario, livro)) {
-            mensagemErro = "Usuário já possui empréstimo deste livro.";
-            return false;
-        }
         if (excedeuLimiteEmprestimos(usuario)) {
             mensagemErro = "Limite de empréstimos atingido (máximo 2).";
             return false;
         }
         if (!verificarReservas(usuario, livro)) {
-            mensagemErro = "Regra de reservas não atendida.";
+            mensagemErro = "O livro se encontra reservado.";
             return false;
         }
 
@@ -53,9 +53,8 @@ public class RegraAlunoGraduacao implements RegraEmprestimo {
         long numReservas = livro.getReservas().size();
         long exemplaresDisponiveis = livro.getExemplares().stream()
                 .filter(Exemplar::getStatus).count();
-
         if (numReservas < exemplaresDisponiveis) {
-            return !livro.getReservas().contains(usuario);
+            return true;
         } else {
             return livro.getReservas().stream().anyMatch(r -> r.getUsuario().equals(usuario));
         }

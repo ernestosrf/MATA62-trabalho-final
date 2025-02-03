@@ -1,5 +1,7 @@
 package model;
 
+import observer.IObservador;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +14,7 @@ public class Livro {
     private int anoPublicacao;
     private List<Exemplar> exemplares;
     private List<Reserva> reservas;
+    private List<IObservador> observadores = new ArrayList<>();
 
     public Livro(int codigo, String titulo, String editora, List<String> autores, String edicao, int anoPublicacao) {
         this.codigo = codigo;
@@ -46,6 +49,7 @@ public class Livro {
 
     public void adicionarReserva(Reserva reserva) {
         reservas.add(reserva);
+        notificarObservadores();
     }
 
     public Exemplar encontrarExemplarDisponivel() {
@@ -53,5 +57,21 @@ public class Livro {
                 .filter(Exemplar::getStatus)
                 .findFirst()
                 .orElse(null);
+    }
+
+    public void adicionarObservador(IObservador observador) {
+        if (!observadores.contains(observador)) {
+            observadores.add(observador);
+        }
+    }
+
+    public List<IObservador> getObservadores() {
+        return observadores;
+    }
+
+    private void notificarObservadores() {
+        if (reservas.size() > 2) {
+            observadores.forEach(obs -> obs.notificar(this.titulo));
+        }
     }
 }

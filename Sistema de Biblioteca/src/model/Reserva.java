@@ -17,4 +17,13 @@ public class Reserva {
     public Usuario getUsuario() { return usuario; }
     public Livro getLivro() { return livro; }
     public LocalDate getDataReserva() { return dataReserva; }
+
+    @Override
+    public String toString() {
+        return "Reserva{" +
+                " usuario='" + usuario.getNome() + '\'' +
+                ", livro='" + livro.getTitulo() + '\'' +
+                '}';
+    }
+
 }
